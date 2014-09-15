@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<heisenberg:server xmlns:heisenberg="https://github.com/brucexx/heisenberg">
+	<!-- 系统参数定义，服务端口、管理端口，处理器个数、线程池等。 -->
+	<system>
+		<property name="serverPort">4310</property>
+		<property name="managerPort">4311</property>
+		<property name="initExecutor">16</property>
+		<property name="timerExecutor">4</property>
+		<property name="managerExecutor">4</property>
+		<property name="processors">8</property>
+		<property name="processorHandler">16</property>
+		<property name="processorExecutor">16</property>
+		<property name="clusterHeartbeatUser">_HEARTBEAT_USER_</property>
+		<property name="clusterHeartbeatPass">_HEARTBEAT_PASS_</property>
+		<property name="dataNodeHeartbeatPeriod">300000</property>
+	</system>
+
+	<!-- 用户访问定义，用户名、密码、schema等信息。 -->
+	<user name="pay">
+		<property name="needEncrypt">true</property>
+		<property name="password">lTrRlcGA0jOuucx8z4pCKj1Qg4GuqQNj2FDT2x9B4P4TEO/O5kj9TxPgzT2JgqY6jo8XsVSvzVqZ4W5DJc1gCA==</property>
+		<property name="schemas">trans_shard,trans_slave_shard</property>
+	</user>
+</heisenberg:server>

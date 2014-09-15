@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<heisenberg:schema xmlns:heisenberg="https://github.com/brucexx/heisenberg">
+	<!-- 主库 -->
+
+	<schema name="test_shard">
+		<table name="trans_tb" dataNode="testTransDN$0-9" rule="testRule" />
+	</schema>
+
+	<dataNode name="testTransDN">
+		<property name="dataSource">
+			<dataSourceRef>testTransDS$0-9</dataSourceRef>
+			<dataSourceRef>slaveTestTransDS$0-9</dataSourceRef>
+			<dataSourceRef>disasterTestTransDS$0-9</dataSourceRef>
+		</property>
+		<property name="poolSize">256</property>
+		<property name="rwRule">m:1,s:1</property>
+		<property name="heartbeatSQL">select user()</property>
+	</dataNode>
+	<dataSource name="testTransDS" type="mysql">
+		<property name="location">
+			<location>10.46.188.55:8123/db$0-9</location>
+		</property>
+		<property name="user">root</property>
+		<property name="password">st0078</property>
+	</dataSource>
+
+	<!-- 从库 -->
+	<!--schema name="trans_slave_shard"> <table name="t_trans" dataNode="transSlaveDN$0-99" 
+		rule="rule1"/> <table name="t_recvables" dataNode="transSlaveDN$0-99" rule="rule2"/> 
+		<table name="t_trans_id_map" dataNode="transSlaveDN$0-99" rule="rule3"/> 
+		<table name="t_payments" dataNode="transSlaveDN$0-99" rule="rule4"/> <table 
+		name="t_loan_log" dataNode="transSlaveDN$0-99" rule="rule1" /> </schema> 
+		<dataNode name="transSlaveDN"> <property name="dataSource"> <dataSourceRef>transSlaveDS$0-99</dataSourceRef> 
+		</property> <property name="poolSize">256</property> <property name="heartbeatSQL">select 
+		user()</property> </dataNode> <dataSource name="transSlaveDS" type="mysql"> 
+		<property name="location"> <location>127.0.0.1:5506/wms_db_$00-99</location> 
+		</property> <property name="user">pay</property> <property name="password">MiraCle</property> 
+		<property name="needEncrypt">false</property> </dataSource -->
+</heisenberg:schema>
